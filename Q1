@@ -1,0 +1,18 @@
+def trifeca(word):
+    """
+    Checks whether word contains three consecutive double-letter pairs.
+    word: string
+    returns: bool
+    """
+    #Go through all letters until the 6th from the end:
+    for letter in range(0,len(word)-5):
+        pair1 = word[letter:letter+2]
+        pair2 = word[letter+2:letter+4]
+        pair3 = word[letter+4:letter+6]
+        #If there are three consecutive pairs of identical letters, return True:
+        if pair1[0]==pair1[1] and pair2[0]==pair2[1] and pair3[0]==pair3[1]:
+            return True
+    return False
+
+word = "abccddee0123"
+print(trifeca(word))
