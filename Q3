@@ -1,0 +1,37 @@
+def compare_subjects_within_student(subj1_all_students, subj2_all_students):
+    """
+    Compare the two subjects with their students and print out the "preferred"
+    subject for each student. Single-subject students shouldn't be printed.
+    subj1_all_students, subj2_all_students: dictionaries containing students' grades as lists
+    and the subject's name as a string.
+    """
+    for key in subj1_all_students:
+        if key!="name":
+            subj1_grades = subj1_all_students.get(key)
+            subj2_grades = subj2_all_students.get(key,260)
+            if subj2_grades!=260: #If the student is not a single-subject student
+                #Check which subject has the highest max grade and print its name:
+                if max(subj1_grades)>max(subj2_grades):
+                    print(key+": "+subj1_all_students["name"])
+                elif max(subj1_grades)<max(subj2_grades):
+                    print(key+": "+subj2_all_students["name"])
+                #I wasn't sure if I should handle a case in which both subjects are equal.
+                else:
+                    print(key + ": The highest grade is equal in both subjects")
+
+history = {"John":[80,54],
+           "David":[76,34],
+           "Dana":[92,98],
+           "Sharon":[74,83],
+           "Lucy":[98,89],
+           "name":"History"
+           }
+math = {"John":[78,34],
+        "David":[78,84],
+        "Dana":[76,100],
+        "Jennifer":[90,99],
+        "Lucy":[98,70],
+        "name":"Math"
+        }
+
+compare_subjects_within_student(history,math)
